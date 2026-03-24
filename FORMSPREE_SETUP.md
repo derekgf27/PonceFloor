@@ -12,7 +12,7 @@
 3. **Copy your Form ID** (looks like: `xvgkqyzw` or `YOUR_FORM_ID`)
 
 ## Step 3: Set Recipient Email
-1. In your form settings, set the recipient email to: `poncefloorscs@gmail.com`
+1. In your form settings, set the recipient email to: `poncefloorcs@gmail.com`
 2. This is where form submissions will be sent
 
 ## Step 4: Update the Code
@@ -31,7 +31,7 @@ Example:
 ## Step 5: Test the Form
 1. Fill out the contact form on your website
 2. Submit it
-3. Check `poncefloorscs@gmail.com` - you should receive the form submission
+3. Check `poncefloorcs@gmail.com` - you should receive the form submission
 4. You may need to confirm the email address in Formspree first (they'll send a confirmation email)
 
 ## Benefits of Formspree
