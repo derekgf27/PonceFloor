@@ -1446,6 +1446,13 @@ body {
     color: var(--light-gray);
 }
 
+.footer-bottom .footer-credit {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.02em;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
