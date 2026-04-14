@@ -2,18 +2,20 @@
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
     });
-});
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -184,29 +186,13 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.mission-card, .service-card, .testimonial-card, .gallery-item, .about-content');
+    const animateElements = document.querySelectorAll('.mission-card, .service-section, .testimonial-card, .gallery-item, .about-content');
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
-    });
-});
-
-// Gallery lightbox functionality (placeholder for future implementation)
-document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', () => {
-        // This can be expanded to show a lightbox with the actual image/video
-        console.log('Gallery item clicked - ready for lightbox implementation');
-    });
-});
-
-// WhatsApp link handler
-document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-        // Ensure WhatsApp link opens in new tab
-        link.target = '_blank';
     });
 });
 
@@ -230,7 +216,6 @@ formInputs.forEach(input => {
 });
 
 // Video modal (lightbox) - open video in bigger window to fully appreciate it
-const videoGalleryCard = document.getElementById('videoGalleryCard');
 const videoModalTrigger = document.getElementById('videoModalTrigger');
 const videoModal = document.getElementById('videoModal');
 const videoModalClose = document.querySelector('.video-modal-close');
@@ -287,21 +272,8 @@ if (videoModalTrigger2) {
     });
 }
 
-if (videoGalleryCard && !videoModalTrigger) {
-    videoGalleryCard.addEventListener('click', handleVideoCardClick);
-}
-
 if (videoModalClose) videoModalClose.addEventListener('click', closeVideoModal);
 if (videoModalOverlay) videoModalOverlay.addEventListener('click', closeVideoModal);
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && videoModal && videoModal.classList.contains('is-open')) {
-        closeVideoModal();
-    }
-    if (e.key === 'Escape' && imageModal && imageModal.classList.contains('is-open')) {
-        closeImageModal();
-    }
-});
 
 // Image lightbox - open gallery photos in modal with prev/next
 const imageModal = document.getElementById('imageModal');
@@ -378,6 +350,14 @@ if (imageModalPrev) imageModalPrev.addEventListener('click', function (e) { e.st
 if (imageModalNext) imageModalNext.addEventListener('click', function (e) { e.stopPropagation(); imageModalNextClick(); });
 
 document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && videoModal && videoModal.classList.contains('is-open')) {
+        closeVideoModal();
+        return;
+    }
+    if (e.key === 'Escape' && imageModal && imageModal.classList.contains('is-open')) {
+        closeImageModal();
+        return;
+    }
     if (!imageModal || !imageModal.classList.contains('is-open')) return;
     if (e.key === 'ArrowLeft') {
         e.preventDefault();
